@@ -18,4 +18,3 @@ _(schematics based off Dmitry Yegorenkov's [AccordionMega project](https://githu
 | Female headers 2 x 1            | 1      |
 | Male headers 2 x 2              | 58     |
 | Ribbon cable, wire              | /      |
-|                                 |        |
