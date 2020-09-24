@@ -32,7 +32,7 @@ int rowVal[NUM_ROWS];
 unsigned long lastDebounceTime[NUM_ROWS][NUM_COLS] = {0};
 unsigned long debounceDelay = 5;
 
-int note = 36; //lowest note
+int note = 60; //lowest note
 byte midiCh = 0;
 
 boolean keyPressed[NUM_ROWS][NUM_COLS];
@@ -85,7 +85,7 @@ void keys() {
 
       // note on
       for (int row = 0; row < NUM_ROWS; ++row) {
-        if (rowVal[row] == HIGH && !keyPressed[row][col]) {
+        if (rowVal[row] == LOW && !keyPressed[row][col]) {
           if ((millis() - lastDebounceTime[row][col]) > debounceDelay){
             lastDebounceTime[row][col] = millis();
   
@@ -98,7 +98,7 @@ void keys() {
       
       // note off
       for (int row = 0; row < NUM_ROWS; ++row) {
-        if (rowVal[row] == LOW && keyPressed[row][col]) {
+        if (rowVal[row] == HIGH && keyPressed[row][col]) {
           keyPressed[row][col] = false;
           noteOff(midiCh, keyToMidiMap[row][col], 63);
           MidiUSB.flush();
